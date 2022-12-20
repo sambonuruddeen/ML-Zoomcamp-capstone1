@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: financial-inclusion
+spec:
+  selector:
+    matchLabels:
+      app: financial-inclusion
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: financial-inclusion
+    spec:
+      containers:
+      - name: financial-inclusion
+        image: financial-inclusion:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"            
+          limits:
+            memory: "128Mi"
+            cpu: 0.5
+        ports:
+        - containerPort: 9696
